@@ -8,6 +8,11 @@ This repository demonstrates the approach and the live MVP slice. It is intentio
 
 > ⚠️ **Important:** the most valuable assets (trained weights, finely tuned thresholds/coefficients, and a few helper datasets) are **intentionally NOT included**. I plan to **monetize** the service later. **The code here is not licensed for public use** (see _License & Usage_).
 
+![Видео без названия — сделано в Clipchamp (17)](https://github.com/user-attachments/assets/ddbf6c6d-a7f1-4d4d-9708-83a8bbffb8aa)
+<img width="1919" height="1073" alt="image" src="https://github.com/user-attachments/assets/c9fe5ef3-32f8-4b99-8c02-d4abadedfe05" />
+<img width="1919" height="1132" alt="image" src="https://github.com/user-attachments/assets/850abe6d-1e20-4d40-99e7-9958781a5c12" />
+
+
 
 ## What it does (short)
 

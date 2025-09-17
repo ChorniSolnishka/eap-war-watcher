@@ -1,0 +1,27 @@
+services:
+  db:
+    image: postgres:16
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: eapdb
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+
+  backend:
+    build: ./backend
+    environment:
+      DATABASE_URL: postgresql+psycopg://postgres:postgres@db:5432/eapdb
+      APP_NAME: EaP WarWatcher
+      STORAGE_ROOT: /app/storage
+    depends_on:
+      - db
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./backend/storage:/app/storage
+
+volumes:
+  pgdata:

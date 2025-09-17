@@ -1,0 +1,21 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Full-viewport app background */
+html,
+body,
+#root {
+  height: 100%;
+}
+
+/* Global background image + subtle overlay for readability */
+body {
+  background-image: url('/background.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+}
+
+/* Optional: overlay via utility classes inside App */

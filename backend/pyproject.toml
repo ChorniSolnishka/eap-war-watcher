@@ -1,0 +1,61 @@
+[tool.poetry]
+name = "eap-war-watcher-backend"
+version = "0.1.0"
+description = "EaP WarWatcher FastAPI backend"
+authors = ["You <you@example.com>"]
+packages = [{ include = "app" }]
+
+[tool.poetry.dependencies]
+python = "3.12.*"
+fastapi = "0.115.0"
+uvicorn = { version = "0.30.6", extras = ["standard"] }
+pydantic = "2.9.0"
+pydantic-settings = "2.4.0"
+SQLAlchemy = "2.0.36"
+psycopg = { version = "3.2.1", extras = ["binary"] }
+alembic = "1.13.2"
+python-multipart = "0.0.9"
+python-dotenv = "^1.1.1"
+
+# ВАЖНО: оставляем только headless-вариант OpenCV (для серверов/без GUI)
+opencv-python-headless = "^4.10.0"
+# opencv-python = "^4.12.0.88"  # УДАЛЕНО, чтобы не конфликтовало
+
+numpy = "^2.0.0"
+xlsxwriter = "^3.2.5"
+scikit-image = "^0.24.0"
+pillow = "^10.3.0"
+imagehash = "^4.3.2"
+rapidfuzz = "^3.14.0"
+
+# OCR/vision пакеты могут быть чувствительны к версии Python/вендора.
+# Если возникнут колёса/бинарные зависимости — можно временно ставить их через pip после poetry install.
+paddleocr = "^3.2.0"
+
+kornia = "^0.7.3"
+
+# Внимание: LightGlue и RoMa тянут PyTorch; с CPU-сборкой ок.
+lightglue = { git = "https://github.com/cvg/LightGlue.git" }
+romatch = { git = "https://github.com/Parskatt/RoMa.git" }
+
+# СТАБИЛЬНЫЕ версии PyTorch под Python 3.12 (CPU по умолчанию через отдельный source)
+torch = "^2.3.1"
+torchvision = "^0.18.1"
+
+[tool.poetry.group.dev.dependencies]
+ruff = "*"
+black = "*"
+mypy = "*"
+pytest = "*"
+
+[tool.poetry.scripts]
+api = "app.__run__:run"
+
+[tool.ruff]
+line-length = 100
+
+# Источник CPU-колёс PyTorch (чтобы Poetry брал их именно отсюда по явному указанию)
+[[tool.poetry.source]]
+name = "pytorch-cpu"
+url = "https://download.pytorch.org/whl/cpu"
+priority = "explicit"
